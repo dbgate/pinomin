@@ -32,8 +32,8 @@ child.info('hello child!');
 This produces:
 
 ```
-{"level":30,"time":1531171074631,"msg":"hello world","pid":657,"hostname":"Davids-MBP-3.fritz.box"}
-{"level":30,"time":1531171082399,"msg":"hello child!","pid":657,"hostname":"Davids-MBP-3.fritz.box","a":"property"}
+{"level":30,"time":1531171074631,"msg":"hello world"}
+{"level":30,"time":1531171082399,"msg":"hello child!","a":"property"}
 ```
 
 ## Configure logger
