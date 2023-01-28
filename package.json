@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "pinomin",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "description": "Minimalistic logger compatible with pino",
+  "homepage": "https://github.com/dbgate/pinomin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbgate/pinomin"
+  },
+  "author": "Jan Prochazka",
+  "license": "MIT",
+  "keywords": [
+    "logger",
+    "pino",
+    "json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc --watch",
+    "test": "jest",
+    "test:ci": "jest --json --outputFile=result.json --testLocationInResults",
+    "prepare": "yarn build"
+  },
+  "files": [
+    "lib"
+  ],
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.7.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^4.4.3"
+  }
+}
