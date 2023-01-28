@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "0.0.0",
   "name": "pinomin",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
