@@ -133,7 +133,9 @@ export interface ILogger {
     targets: ILogTargetConfig[];
   }
   
-  export default function createLogger(config: ILogConfig): ILogger {
+  export function createLogger(config: ILogConfig): ILogger {
     return new PinoLikeLogger(config);
   }
+  
+  export default createLogger;
   
