@@ -68,26 +68,29 @@ class PinoLikeLogger implements Logger {
     this.log(this.packRecord(logLevelNumbers.fatal, data, msg));
   }
 
-  packRecord(level: number, data, msg?): LogRecord {
+  packRecord(level: number, data: string | {}, msg?: string): LogRecord {
+    const config = this.config.getConfig ? this.config.getConfig() : this.config;
     if (msg) {
+      // 2 parameters, unpack data
       return {
-        ...this.config.base,
-        ...data,
+        ...config.base,
+        ...(data as {}),
         level,
         msg,
         time: new Date().getTime(),
       };
     }
     return {
-      ...this.config.base,
+      ...config.base,
       level,
-      msg: data,
+      msg: data as string,
       time: new Date().getTime(),
     };
   }
 
   log(record: LogRecord) {
-    for (const target of this.config.targets) {
+    const config = this.config.getConfig ? this.config.getConfig() : this.config;
+    for (const target of config.targets) {
       if (record.level < logLevelNames[target.level]) {
         continue;
       }
@@ -135,8 +138,9 @@ export interface LogTargetConfig {
 }
 
 export interface LogConfig {
-  base: {};
-  targets: LogTargetConfig[];
+  base?: {};
+  targets?: LogTargetConfig[];
+  getConfig?: () => LogConfig;
 }
 
 export function createLogger(config: LogConfig): Logger {
