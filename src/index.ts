@@ -34,6 +34,7 @@ class PinoLikeLogger implements Logger {
     this.config = {
       targets: config?.targets || [{ type: 'console', level: 'info' }],
       base: config?.base || {},
+      getConfig: config?.getConfig,
     };
   }
 
