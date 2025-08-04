@@ -102,6 +102,9 @@ class PinoLikeLogger implements Logger {
         case 'stream':
           target.stream.write(JSON.stringify(record) + '\n');
           break;
+        case 'objstream':
+          target.objstream.send(record);
+          break;
       }
     }
   }
@@ -132,10 +135,15 @@ export const logLevelNumbers = {
   fatal: 60,
 };
 
+export interface LogObjectStream {
+  send(record: LogRecord): void;
+}
+
 export interface LogTargetConfig {
   level: keyof typeof logLevelNumbers;
-  type: 'console' | 'stream';
+  type: 'console' | 'stream' | 'objstream';
   stream?: any;
+  objstream?: LogObjectStream;
 }
 
 export interface LogConfig {
